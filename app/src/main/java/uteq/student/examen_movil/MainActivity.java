@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.mindorks.placeholderview.PlaceHolderView;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,6 +16,7 @@ import java.util.Map;
 
 import uteq.student.examen_movil.WebService.Asynchtask;
 import uteq.student.examen_movil.WebService.WebService;
+import uteq.student.examen_movil.model.journal;
 
 public class MainActivity extends AppCompatActivity implements Asynchtask {
     public static final String URL = "https://revistas.uteq.edu.ec/ws/journals.php";
@@ -25,10 +29,17 @@ public class MainActivity extends AppCompatActivity implements Asynchtask {
                 datos, this, this);
         ws.execute("GET");
     }
-
+    ArrayList<journal> listjournal;
     @Override
     public void processFinish(String result) throws JSONException {
-        JSONObject pais=  new JSONObject(result);
+        try {
+            JSONObject JSONlista =  new JSONObject(result);
 
+            listjournal = journal.JsonObjectsBuild(JSONlista);
+            PlaceHolderView mGalleryView = (PlaceHolderView)findViewById(R.id.galleryView);
+            mGalleryView
+                    .addView(new ImageTypeBig(this.getApplicationContext(), mGalleryView, url1));
+        }catch(JSONException e){
+        }
     }
 }
