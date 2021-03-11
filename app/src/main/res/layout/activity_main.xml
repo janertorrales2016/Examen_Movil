@@ -8,10 +8,17 @@
     tools:context=".MainActivity"
     >
 
-    <com.mindorks.placeholderview.PlaceHolderView
-        android:id="@+id/galleryView"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/item_journal"/>
+        android:layout_height="64dp"
+        android:id="@+id/prueba"/>
+
+    <com.mindorks.placeholderview.InfinitePlaceHolderView
+        android:id="@+id/loadMoreView"
+        android:layout_width="match_parent"
+        android:layout_height="568dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        tools:listitem="@layout/item_journal" />
 
 </RelativeLayout>

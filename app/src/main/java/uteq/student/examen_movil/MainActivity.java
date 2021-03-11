@@ -3,10 +3,10 @@ package uteq.student.examen_movil;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
-import com.mindorks.placeholderview.PlaceHolderView;
+import com.mindorks.placeholderview.InfinitePlaceHolderView;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -20,10 +20,14 @@ import uteq.student.examen_movil.model.journal;
 
 public class MainActivity extends AppCompatActivity implements Asynchtask {
     public static final String URL = "https://revistas.uteq.edu.ec/ws/journals.php";
+    private InfinitePlaceHolderView mLoadMoreView;
+    private TextView prueba;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mLoadMoreView = (InfinitePlaceHolderView)findViewById(R.id.loadMoreView);
+        prueba= findViewById(R.id.prueba);
         Map<String, String> datos = new HashMap<String, String>();
         WebService ws = new WebService(URL,
                 datos, this, this);
@@ -32,13 +36,13 @@ public class MainActivity extends AppCompatActivity implements Asynchtask {
     ArrayList<journal> listjournal;
     @Override
     public void processFinish(String result) throws JSONException {
+        prueba.setText(result);
         try {
             JSONObject JSONlista =  new JSONObject(result);
 
             listjournal = journal.JsonObjectsBuild(JSONlista);
-            PlaceHolderView mGalleryView = (PlaceHolderView)findViewById(R.id.galleryView);
-            mGalleryView
-                    .addView(new ImageTypeBig(this.getApplicationContext(), mGalleryView, url1));
+
+
         }catch(JSONException e){
         }
     }

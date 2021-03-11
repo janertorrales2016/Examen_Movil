@@ -5,7 +5,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import uteq.student.json_rest_api.WebService.HttpRequest.HttpRequestException;
+import uteq.student.examen_movil.WebService.HttpRequest.HttpRequestException;
 
 import org.json.JSONException;
 
