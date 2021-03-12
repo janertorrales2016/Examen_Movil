@@ -1,8 +1,11 @@
 package uteq.student.examen_movil.model;
 
 
+import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -47,6 +50,19 @@ public class ItemView3 {
     }
     @Click(R.id.button)
     public void onCardClick() {
+        String url= mInfo.getUrl();
+        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI|
+                DownloadManager.Request.NETWORK_MOBILE);
+        request.setTitle(mInfo.getTitle());
+        request.setDescription("Descargando File....");
+
+        request.allowScanningByMediaScanner();
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,""+System.currentTimeMillis());
+
+        DownloadManager manager = (DownloadManager) mContext.getSystemService(Context.DOWNLOAD_SERVICE);
+        manager.enqueue(request);
 
     }
 
