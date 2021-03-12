@@ -1,10 +1,13 @@
 package uteq.student.examen_movil.model;
 
+import android.widget.Toast;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class journal {
     private String journal_id;
@@ -78,13 +81,15 @@ public class journal {
         ArrayList<journal> jou = new ArrayList<>();
 
         for (int i = 0; i < datos.length() ; i++) {
-            String journal_id = datos.getString("journal_id").toString() ;
-            String portada  =  datos.getString("portada").toString() ;
-            String abbreviation  =  datos.getString("abbreviation").toString() ;
-            String  description  =  datos.getString("description").toString() ;
-            String  journalThumbnail  =  datos.getString("journalThumbnail").toString() ;
-            String name  =  datos.getString("name").toString() ;
-            jou.add(new journal(journal_id,portada,abbreviation,description,journalThumbnail,name));
+
+            String journal_id2 = datos.getString("journal_id") ;
+            String portada2  =  datos.getString("portada");
+            String abbreviation2  =  datos.getString("abbreviation") ;
+            String  description2  =  datos.getString("description");
+            String  journalThumbnail2  =  datos.getString("journalThumbnail") ;
+            String name2  =  datos.getString("name").toString() ;
+
+            jou.add(new journal(journal_id2,portada2,abbreviation2,description2,journalThumbnail2,name2));
         }
         return jou;
     }
