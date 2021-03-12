@@ -6,7 +6,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
+import com.mindorks.placeholderview.annotations.LongClick;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
 
@@ -42,5 +44,8 @@ public class ItemView {
         timeTxt.setText(mInfo.getJournal_id());
         Glide.with(mContext).load(mInfo.getPortada()).into(imageView);
     }
+
+   
+
 
 }
