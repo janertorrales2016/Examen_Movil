@@ -1,23 +1,12 @@
 package uteq.student.examen_movil;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.mindorks.placeholderview.InfinitePlaceHolderView;
-
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
 import uteq.student.examen_movil.WebService.Asynchtask;
 import uteq.student.examen_movil.WebService.WebService;
 import uteq.student.examen_movil.model.ItemView;
@@ -31,20 +20,23 @@ public class MainActivity extends AppCompatActivity implements  Asynchtask {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //inicializacion del InfinitePlaceHolderView
         mLoadMoreView = (InfinitePlaceHolderView)findViewById(R.id.loadMoreView);
-        Log.d("DEBUG", "algo");
+
+        //consulta al Web Service
         Map<String, String> datos = new HashMap<String, String>();
         WebService ws = new WebService(URL,
                 datos, this, this);
         ws.execute("GET");
-
     }
 
     @Override
     public void processFinish(String result) throws JSONException {
+        //envio a parsear
         ArrayList<journal> feedList= journal.JsonObjectsBuild(result);
-        for(int i = 0; i < feedList.size(); i++){
+
+        //llenar CardView de Infinity placeholderview
+        for(int i = 0; i < feedList.size(); i++) {
             mLoadMoreView.addView(new ItemView(this.getApplicationContext(), feedList.get(i)));
         }
         mLoadMoreView.setLoadMoreResolver(new LoadMoreView(mLoadMoreView, feedList));

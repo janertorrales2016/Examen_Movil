@@ -27,19 +27,15 @@ public class LoadMoreView2 {
 
     @LoadMore
     private void onLoadMore(){
-        Log.d("DEBUG", "onLoadMore");
         new ForcedWaitedLoading();
     }
 
     class ForcedWaitedLoading implements Runnable{
-
         public ForcedWaitedLoading() {
             new Thread(this).start();
         }
-
         @Override
         public void run() {
-
             try {
                 Thread.currentThread().sleep(2000);
             }catch (InterruptedException e){
@@ -49,9 +45,8 @@ public class LoadMoreView2 {
                 @Override
                 public void run() {
                     int count = mLoadMoreView2.getViewCount();
-                    Log.d("DEBUG", "count " + count);
                     for (int i = count - 1;
-                         i < (count - 1 + LoadMoreView.LOAD_VIEW_SET_COUNT) && mFeedList2.size() > i;
+                         i < (count - 1 + LoadMoreView2.LOAD_VIEW_SET_COUNT) && mFeedList2.size() > i;
                          i++) {
 
                         mLoadMoreView2.addView(new ItemView2(mLoadMoreView2.getContext(), mFeedList2.get(i)));

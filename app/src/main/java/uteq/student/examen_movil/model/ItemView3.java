@@ -63,7 +63,6 @@ public class ItemView3 {
 
         DownloadManager manager = (DownloadManager) mContext.getSystemService(Context.DOWNLOAD_SERVICE);
         manager.enqueue(request);
-
     }
 
 }

@@ -52,7 +52,6 @@ public class ItemView {
     public void onCardClick() {
         Intent intent = new Intent(mContext, volumenes.class);
         intent.putExtra("id", mInfo.getJournal_id());
-        Log.d("sajid", "onClick");
         mContext.startActivity(intent);
     }
 

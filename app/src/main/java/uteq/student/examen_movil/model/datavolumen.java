@@ -3,7 +3,6 @@ package uteq.student.examen_movil.model;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 
 public class datavolumen {
@@ -91,11 +90,10 @@ public class datavolumen {
         this.cover = cover;
     }
 
+    //Parsear
     public static ArrayList<datavolumen> JsonObjectsBuild(String xx) throws JSONException {
-
         ArrayList<datavolumen> volu = new ArrayList<>();
         JSONArray datos = new JSONArray(xx);
-
         for (int i = 0; i < datos.length() ; i++) {
 
             JSONObject data = datos.getJSONObject(i);
