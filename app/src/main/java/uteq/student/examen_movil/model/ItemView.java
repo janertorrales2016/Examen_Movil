@@ -44,11 +44,11 @@ public class ItemView {
     private void onResolved() {
         titleTxt.setText(mInfo.getName());
         captionTxt.setText(mInfo.getAbbreviation());
-        timeTxt.setText(mInfo.getJournal_id());
+        timeTxt.setText(mInfo.getDescription());
         Glide.with(mContext).load(mInfo.getPortada()).into(imageView);
     }
 
-    @Click(R.id.imageView)
+    @Click(R.id.root)
     public void onCardClick() {
         Intent intent = new Intent(mContext, volumenes.class);
         intent.putExtra("id", mInfo.getJournal_id());

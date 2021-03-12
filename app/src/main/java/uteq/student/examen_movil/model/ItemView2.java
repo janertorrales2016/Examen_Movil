@@ -47,7 +47,7 @@ public class ItemView2 {
         Glide.with(mContext).load(mInfo.getCover()).into(imageView);
     }
 
-    @Click(R.id.imageView)
+    @Click(R.id.root)
     public void onCardClick() {
         Intent intent = new Intent(mContext, articulo.class);
         intent.putExtra("id", mInfo.getIssue_id());
