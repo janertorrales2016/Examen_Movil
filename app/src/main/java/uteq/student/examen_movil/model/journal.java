@@ -1,14 +1,9 @@
 package uteq.student.examen_movil.model;
 
-import android.util.Log;
-import android.widget.Toast;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class journal {
     private String journal_id;
@@ -78,26 +73,20 @@ public class journal {
         this.name = name;
     }
 
+    //Parsear
     public static ArrayList<journal> JsonObjectsBuild(String xx) throws JSONException {
-
         ArrayList<journal> jou = new ArrayList<>();
         JSONArray datos = new JSONArray(xx);
-
         for (int i = 0; i < datos.length() ; i++) {
-
             JSONObject data = datos.getJSONObject(i);
-
             String journal_id2 = data.getString("journal_id") ;
             String portada2  =  data.getString("portada");
             String abbreviation2  =  data.getString("abbreviation") ;
             String  description2  =  data.getString("description");
             String  journalThumbnail2  =  data.getString("journalThumbnail") ;
             String name2  =  data.getString("name").toString() ;
-
             jou.add(new journal(journal_id2,portada2,abbreviation2,description2,journalThumbnail2,name2));
         }
         return jou;
     }
-
-
 }
